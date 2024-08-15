@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../../include/rootFinding.hpp"
+#include "rootFinding.hpp"
 
 double fn(double x);
 double dfn(double x);

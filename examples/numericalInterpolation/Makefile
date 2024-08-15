@@ -4,7 +4,7 @@ include $(PROJECT_ROOT)/makefile.inc
 LIB = libSolvers.a
 
 EXEDIR = ./bin
-out = root.out
+out = interpol.out
 
 OBJDIR = ./obj
 LIBDIR = $(PROJECT_ROOT)/lib
@@ -31,9 +31,10 @@ main: $(OBJS) $(LIBDIR)/$(LIB)
 all: $(OBJDIR) $(EXEDIR) main
 
 exe:
+	mkdir -p result
 	cd $(EXEDIR); ./$(out)
 
 clean:
-	rm -rf $(OBJDIR) $(EXEDIR)
+	rm -rf $(OBJDIR) $(EXEDIR) result
 
 .PHONY: all exe clean

@@ -1,10 +1,9 @@
-include ./makefile.inc
+include ./Makefile.inc
 
-OBJDIR = ./build
+#OBJDIR = ./build
 
-$(OBJDIR) : 
-	if not exist $(OBJDIR) mkdir $(OBJDIR)
-
+#$(OBJDIR) : 
+#	mkdir -p $(OBJDIR)
 
 lib: $(OBJDIR)
 	$(MAKE) -C src all || true

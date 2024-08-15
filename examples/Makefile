@@ -1,6 +1,6 @@
 HOME = ..
 
-include $(HOME)/makefile.inc
+include $(HOME)/Makefile.inc
 
 root:
 	$(MAKE) -C rootFinding all || true

@@ -1,12 +1,12 @@
 HOME = ..
 
-include $(HOME)/makefile.inc
+include $(HOME)/Makefile.inc
 
 LIB = libSolvers.a
 
-OBJDIR  = $(HOME)\build
-LIBDIR  = $(HOME)\lib
-INCLUDE = $(HOME)\include
+OBJDIR  = $(HOME)/build
+LIBDIR  = $(HOME)/lib
+INCLUDE = $(HOME)/include
 
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
@@ -19,15 +19,15 @@ $(info OBJS = $(OBJS))
 
 $(OBJDIR):
 #   Linux
-#	mkdir -p $(OBJDIR) 
+	mkdir -p $(OBJDIR) 
 #	Windows
-	if not exist $(OBJDIR) mkdir $(OBJDIR)
+#	if not exist $(OBJDIR) mkdir $(OBJDIR)
 
 $(LIBDIR):
 #   Linux
-#	mkdir -p $(LIBDIR)  #Linux
+	mkdir -p $(LIBDIR)  #Linux
 #	Windows
-	if not exist $(LIBDIR) mkdir $(LIBDIR) 
+#	if not exist $(LIBDIR) mkdir $(LIBDIR) 
 
 $(OBJDIR)/%.o: %.cpp | $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -39,10 +39,10 @@ $(LIB): $(OBJS)
 
 clean:
 #   Linux
-#	rm -rf $(OBJDIR)
-#	rm -rf $(LIBDIR)
+	rm -rf $(OBJDIR)
+	rm -rf $(LIBDIR)
 #   Window
-	if exist $(OBJDIR) rmdir /S /Q $(OBJDIR)
-	if exist $(LIBDIR) rmdir /S /Q $(LIBDIR)
+#	if exist $(OBJDIR) rmdir /S /Q $(OBJDIR)
+#	if exist $(LIBDIR) rmdir /S /Q $(LIBDIR)
 
 .PHONY: all clean 

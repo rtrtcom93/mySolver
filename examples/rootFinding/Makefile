@@ -1,20 +1,21 @@
-PROJECT_ROOT = ../..
-include $(PROJECT_ROOT)/makefile.inc
+HOME = ../..
+
+include $(HOME)/makefile.inc
 
 LIB = libSolvers.a
 
 EXEDIR = ./bin
-out = root.out
+OUT = root_example.exe
 
-OBJDIR = ./obj
-LIBDIR = $(PROJECT_ROOT)/lib
-INCLUDEDIR = $(PROJECT_ROOT)/include
+OBJDIR = ./build
+LIBDIR = $(HOME)/lib
+INCLUDEDIR = $(HOME)/include
 
 LDFLAGS = -L$(LIBDIR) -lSolvers
 IDFLAGS = -I$(INCLUDEDIR)
 
 SRCS = $(wildcard *.cpp)
-OBJS = $(patsubst %.cpp, $(OBJDIR)/%.o, $(SRCS))
+OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
@@ -26,12 +27,12 @@ $(OBJDIR)/%.o: %.cpp | $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(IDFLAGS)
 
 main: $(OBJS) $(LIBDIR)/$(LIB)
-	$(CXX) $(CXXFLAGS) $< -o $(EXEDIR)/$(out) $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) $< -o $(EXEDIR)/$(OUT) $(LDFLAGS)
 
 all: $(OBJDIR) $(EXEDIR) main
 
 exe:
-	cd $(EXEDIR); ./$(out)
+	cd $(EXEDIR); ./$(OUT)
 
 clean:
 	rm -rf $(OBJDIR) $(EXEDIR)

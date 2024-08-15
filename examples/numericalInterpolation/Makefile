@@ -1,20 +1,21 @@
-PROJECT_ROOT = ../..
-include $(PROJECT_ROOT)/makefile.inc
+HOME = ../..
+
+include $(HOME)/Makefile.inc
 
 LIB = libSolvers.a
 
 EXEDIR = ./bin
-out = interpol.out
+out = interpol_example.exe
 
-OBJDIR = ./obj
-LIBDIR = $(PROJECT_ROOT)/lib
-INCLUDEDIR = $(PROJECT_ROOT)/include
+OBJDIR  = ./build
+LIBDIR  = $(HOME)/lib
+INCLUDE = $(HOME)/include
 
 LDFLAGS = -L$(LIBDIR) -lSolvers
 IDFLAGS = -I$(INCLUDEDIR)
 
 SRCS = $(wildcard *.cpp)
-OBJS = $(patsubst %.cpp, $(OBJDIR)/%.o, $(SRCS))
+OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)

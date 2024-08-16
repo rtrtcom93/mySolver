@@ -1,9 +1,8 @@
 include ./Makefile.inc
 
-#OBJDIR = ./build
+EXEDIR = bin
 
-#$(OBJDIR) : 
-#	mkdir -p $(OBJDIR)
+# $(MAKE) : execute make build
 
 lib: $(OBJDIR)
 	$(MAKE) -C src all || true

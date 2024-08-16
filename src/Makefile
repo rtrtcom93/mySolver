@@ -25,7 +25,7 @@ $(OBJDIR):
 
 $(LIBDIR):
 #   Linux
-	mkdir -p $(LIBDIR)  #Linux
+	mkdir -p $(LIBDIR)
 #	Windows
 #	if not exist $(LIBDIR) mkdir $(LIBDIR) 
 

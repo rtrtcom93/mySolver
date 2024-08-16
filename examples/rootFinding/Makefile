@@ -1,18 +1,18 @@
 HOME = ../..
 
-include $(HOME)/makefile.inc
+include $(HOME)/Makefile.inc
 
 LIB = libSolvers.a
 
 EXEDIR = ./bin
 OUT = root_example.exe
 
-OBJDIR = ./build
-LIBDIR = $(HOME)/lib
-INCLUDEDIR = $(HOME)/include
+OBJDIR  = ./build
+LIBDIR  = $(HOME)/lib
+INCLUDE = $(HOME)/include
 
 LDFLAGS = -L$(LIBDIR) -lSolvers
-IDFLAGS = -I$(INCLUDEDIR)
+IDFLAGS = -I$(INCLUDE)
 
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)

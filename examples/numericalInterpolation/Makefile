@@ -5,14 +5,14 @@ include $(HOME)/Makefile.inc
 LIB = libSolvers.a
 
 EXEDIR = ./bin
-out = interpol_example.exe
+OUT = interpol_example.exe
 
 OBJDIR  = ./build
 LIBDIR  = $(HOME)/lib
 INCLUDE = $(HOME)/include
 
 LDFLAGS = -L$(LIBDIR) -lSolvers
-IDFLAGS = -I$(INCLUDEDIR)
+IDFLAGS = -I$(INCLUDE)
 
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
@@ -26,14 +26,14 @@ $(EXEDIR):
 $(OBJDIR)/%.o: %.cpp | $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(IDFLAGS)
 
-main: $(OBJS) $(LIBDIR)/$(LIB)
-	$(CXX) $(CXXFLAGS) $< -o $(EXEDIR)/$(out) $(LDFLAGS)
+main: $(OBJS)
+	$(CXX) $(CXXFLAGS) $< -o $(EXEDIR)/$(OUT) $(LDFLAGS)
 
 all: $(OBJDIR) $(EXEDIR) main
 
 exe:
 	mkdir -p result
-	cd $(EXEDIR); ./$(out)
+	cd $(EXEDIR); ./$(OUT)
 
 clean:
 	rm -rf $(OBJDIR) $(EXEDIR) result
